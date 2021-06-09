@@ -31,8 +31,17 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
 });
 
+app.get('/assets/recorder-worker.js', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public/assets', 'recorder-worker.js'));
+});
+
+app.get('assets/recorder-worker.js', (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'public/assets', 'recorder-worker.js'));
+});
+
+
 app.get('*', (req, res) => {
-  res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
+  res.sendFile(path.join(process.cwd(), 'public/assets', 'recorder-worker.js'));
 });
 
 app.listen(PORT, () => {
