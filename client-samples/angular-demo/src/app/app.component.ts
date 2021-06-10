@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ElementRef, ViewChild} from '@angular/core'
 import { DictateService } from "./dictate-service";
-import { config } from "dotenv";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +23,7 @@ export class AppComponent {
   switchSpeechRecognition() {
     if (!this.dictateService.isInitialized()) {
       this.dictateService.init({
-        server: `ws://13.37.11.50:2700`,
+        server: `wss://13.37.11.50:2700`,
         onResults: (hyp) => {
           console.log(hyp);
 

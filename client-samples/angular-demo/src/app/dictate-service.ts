@@ -15,6 +15,8 @@ export class DictateService {
   // Path to worker javascript
   readonly WORKER_PATH = 'assets/recorder-worker.js';
 
+  
+
   // Error codes (mostly following Android error names and codes)
   readonly ERR_NETWORK = 2;
   readonly ERR_AUDIO = 3;
