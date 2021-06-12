@@ -23,7 +23,7 @@ export class AppComponent {
   switchSpeechRecognition() {
     if (!this.dictateService.isInitialized()) {
       this.dictateService.init({
-        server: `wss://13.37.11.50:2700`,
+        server: `ws://13.37.11.50:2700`,
         onResults: (hyp) => {
           console.log(hyp);
 
