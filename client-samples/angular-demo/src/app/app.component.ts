@@ -23,7 +23,7 @@ export class AppComponent {
   switchSpeechRecognition() {
     if (!this.dictateService.isInitialized()) {
       this.dictateService.init({
-        server: `ws://coraltalks.com/websocket`,
+        server: `wss://coraltalks.com/websocket`,
         onResults: (hyp) => {
           console.log(hyp);
 
