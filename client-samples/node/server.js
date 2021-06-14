@@ -44,6 +44,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'public/assets', 'recorder-worker.js'));
 });
 
+app.get('/latency', (req, res) => {
+  res.json({status: "ok"});
+});
+
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);
 })
