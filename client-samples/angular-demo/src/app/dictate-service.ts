@@ -9,7 +9,7 @@ import {
 export class DictateService {
 
   // Defaults
-  readonly SERVER = "wss://coraltalks.com/websocket";
+  readonly SERVER = "wss://mageweave.xyz/websocket";
   // Send blocks 4 x per second as recommended in the server doc.
   readonly INTERVAL = 250;
   // Path to worker javascript
