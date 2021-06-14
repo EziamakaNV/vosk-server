@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { FormsModule } from '@angular/forms';
@@ -19,6 +20,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NoopAnimationsModule,
     FlexLayoutModule,
+    BrowserModule,
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

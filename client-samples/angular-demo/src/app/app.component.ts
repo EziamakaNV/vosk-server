@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { ElementRef, ViewChild} from '@angular/core'
 import { DictateService } from "./dictate-service";
+import 'rxjs/Rx';
+import {PingService} from './ping.service.ts.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [DictateService]
+  providers: [DictateService, PingService]
 })
 
 export class AppComponent {
@@ -17,7 +19,13 @@ export class AppComponent {
   textDataBase = '';
   textData = '';
 
-  constructor(private dictateService: DictateService) {
+  ping: number = 0;
+
+  constructor(private dictateService: DictateService, private _pingService: PingService) {
+    this._pingService.pingStream.subscribe(ping => {
+      this.ping = ping;
+    })
+  
   }
 
   switchSpeechRecognition() {

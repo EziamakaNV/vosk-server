@@ -14,6 +14,10 @@
     <textarea #results name="results" [(ngModel)]="textData" readonly matInput rows="11"></textarea>
   </mat-form-field>
 </form>
+<div>
+  <p>Latency between the client and server</p>
+  {{ping | number:'1.0-0'}}ms 
+</div>
 </div>
 </div>
 </div>
