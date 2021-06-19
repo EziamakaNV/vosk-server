@@ -1,7 +1,7 @@
 <div style="padding:20px" class="mat-app-background">
 <div fxFlex fxLayout="column" fxLayoutGap="20px">
 <div>
-<h3>Angular Speech Demo</h3>
+<h3>Transwave Demo</h3>
 </div>
 <div>
   <button mat-raised-button color="primary" id="btnStart" (click)="switchSpeechRecognition()">
@@ -15,7 +15,7 @@
   </mat-form-field>
 </form>
 <div>
-  <h2 class="latency">AVERAGE LATENCY BETWEEN THE CLIENT AND INFERENCE SERVER</h2>
+  <h2 class="latency">AVERAGE ROUND TRIP LATENCY BETWEEN THE CLIENT AND INFERENCE SERVER</h2>
   <h3 class="latency">{{ping | number:'1.0-0'}}ms</h3>
 </div>
 </div>
