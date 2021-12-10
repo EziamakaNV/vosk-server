@@ -1,23 +1,47 @@
 <div style="padding:20px" class="mat-app-background">
-<div fxFlex fxLayout="column" fxLayoutGap="20px">
-<div>
-<h3>Transwave Demo</h3>
-</div>
-<div>
-  <button mat-raised-button color="primary" id="btnStart" (click)="switchSpeechRecognition()">
-    {{ buttonText }}
-  </button>
-</div>
-<div>
-<form>
-  <mat-form-field fxFlex="60">
-    <textarea #results name="results" [(ngModel)]="textData" readonly matInput rows="11"></textarea>
-  </mat-form-field>
-</form>
-<div>
-  <h2 class="latency">AVERAGE ROUND TRIP LATENCY BETWEEN THE CLIENT AND INFERENCE SERVER</h2>
-  <h3 class="latency">{{ping | number:'1.0-0'}}ms</h3>
-</div>
-</div>
-</div>
+  <div fxFlex fxLayout="column" fxLayoutGap="20px">
+    <div>
+      <h3>Transwave Demo</h3>
+    </div>
+    <div>
+      <div>
+        <label for="language">Choose a Language To Translate to:</label>
+        <select id="language" placeholder="Select Language" [(ngModel)]="selectedLanguage"
+          (ngModelChange)="onLanguageChange($event)">
+          <option *ngFor="let language of languages" [value]="language.code">
+            {{language.name}}
+          </option>
+        </select>
+      </div>
+      <!-- drop down listing languages -->
+      <div>
+        <button mat-raised-button color="primary" id="btnStart" (click)="switchSpeechRecognition()">
+          {{ buttonText }}
+        </button>
+      </div>
+
+      
+      <div>
+        <audio *ngIf="canShowSound; else noSound" controls>
+          <source [src]="voiceUrl" type="audio/mp3">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <ng-template #noSound>
+        <p>Sound isn't ready yet. Try clicking the translate button!</p>
+      </ng-template>
+    </div>
+    <div>
+      <form>
+        <mat-form-field fxFlex="60">
+          <textarea #results name="results" [(ngModel)]="textData" readonly matInput rows="11"></textarea>
+        </mat-form-field>
+      </form>
+      <div>
+        <h2 class="latency">AVERAGE ROUND TRIP LATENCY BETWEEN THE CLIENT AND INFERENCE SERVER</h2>
+        <h3 class="latency">{{ping | number:'1.0-0'}}ms</h3>
+      </div>
+    </div>
+  </div>
 </div>
