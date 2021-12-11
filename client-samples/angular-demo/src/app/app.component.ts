@@ -64,8 +64,10 @@ export class AppComponent {
           console.log(code, data);
         }
       });
+      this.canShowSound ? this.canShowSound = false : null;
       this.buttonText = 'Stop Recognition';
     } else if (this.dictateService.isRunning()) {
+      this.canShowSound ? this.canShowSound = false : null;
       this.dictateService.resume();
       this.buttonText = 'Stop Recognition';
     } else {
