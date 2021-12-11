@@ -32,8 +32,10 @@
       </form>
       <div *ngIf="canShowSound;" for="translatedLanguage">
         <label>Translated Text:</label>
-        <textarea name="translatedLanguage" id="translatedLanguage" rows="5" [(ngModel)]="translatedLanguage"
+        <div>
+          <textarea name="translatedLanguage" id="translatedLanguage" rows="5" [(ngModel)]="translatedLanguage"
           readonly></textarea>
+        </div>
       </div>
       <div *ngIf="canShowSound; else noSound">
         <audio controls>
