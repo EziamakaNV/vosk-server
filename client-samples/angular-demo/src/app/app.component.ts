@@ -26,7 +26,8 @@ export class AppComponent {
   voiceUrl: string = '';
   languages = languages;
   selectedLanguage = '';
-  testLang = "";
+  translatedLanguage = "";
+  sourceLang = 'en';
   
 
   constructor(private dictateService: DictateService, private _pingService: PingService, private _translateService: TranslateService) {
@@ -36,25 +37,25 @@ export class AppComponent {
   
   }
 
-  async switchSpeechRecognition() {
-    this.testLang = await this._translateService.translateToLang("hi how are you", "en", this.selectedLanguage);
-    this.voiceUrl = "http://localhost:5000" + await this._translateService.textToVoice(this.selectedLanguage, this.testLang);
-    this.canShowSound = true;
+  switchSpeechRecognition() {
     if (!this.dictateService.isInitialized()) {
       this.dictateService.init({
         server: `wss://mageweave.xyz/websocket`,
-        onResults: (hyp) => {
+        onResults: async (hyp) => {
           console.log(hyp);
 
           this.textDataBase = this.textDataBase + hyp + '\n';
           this.textData = this.textDataBase;
           this.results.nativeElement.scrollTop = this.results.nativeElement.scrollHeight;
-          
+          this.translatedLanguage = await this._translateService.translateToLang(this.textData, this.sourceLang, this.selectedLanguage);
+          this.voiceUrl = await this._translateService.textToVoice(this.selectedLanguage, this.translatedLanguage);
+          this.canShowSound = true;
         },
         onPartialResults: (hyp) => {
           console.log(hyp);
 
           this.textData = this.textDataBase + hyp;
+          this.canShowSound ? this.canShowSound = false : null;
         },
         onError: (code, data) => {
           console.log(code, data);

@@ -21,22 +21,28 @@
       </div>
 
       
-      <div>
-        <audio *ngIf="canShowSound; else noSound" controls>
-          <source [src]="voiceUrl" type="audio/mp3">
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-
-      <ng-template #noSound>
-        <p>Sound isn't ready yet. Try clicking the translate button!</p>
-      </ng-template>
+      
     </div>
     <div>
       <form>
         <mat-form-field fxFlex="60">
           <textarea #results name="results" [(ngModel)]="textData" readonly matInput rows="11"></textarea>
         </mat-form-field>
+
+        <div>
+          <label *ngIf="canShowSound;" for="translatedLanguage">Translated Text:</label>
+          <textarea id="translatedLanguage" rows="5" [(ngModel)]="translatedLanguage" readonly></textarea>
+        </div>
+        <hr>
+        <div>
+          <audio *ngIf="canShowSound; else noSound" controls>
+            <source [src]="voiceUrl" type="audio/mp3">
+            Your browser does not support the audio element.
+          </audio>
+        </div>
+        <ng-template #noSound>
+          <p>Sound isn't ready yet. Try clicking the translate button!</p>
+        </ng-template>
       </form>
       <div>
         <h2 class="latency">AVERAGE ROUND TRIP LATENCY BETWEEN THE CLIENT AND INFERENCE SERVER</h2>

@@ -7,8 +7,8 @@ import { TranslateOutput, VoiceOutput } from "./interfaces";
 })
 
 export class TranslateService {
-    translateToLangUrl: string = "http://localhost:5000/mlservice/translate";
-    textToVoiceUrl: string = "http://localhost:5000/mlservice/voice";
+    translateToLangUrl: string = "/mlservice/translate";
+    textToVoiceUrl: string = "/mlservice/voice";
     constructor(private _httpClient: HttpClient) {
 
     }
